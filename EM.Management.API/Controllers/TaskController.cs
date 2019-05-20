@@ -15,6 +15,7 @@ namespace EM.Management.API.Controllers
         public bool AddTask([FromBody]TaskModel task)
         {
             Console.WriteLine(task);
+            throw new Exception("throw exeception");
 
             return true;
         }
