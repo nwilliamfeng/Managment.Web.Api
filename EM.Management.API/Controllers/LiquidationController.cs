@@ -13,6 +13,8 @@ namespace EM.Management.API.Controllers
         //public static JsonResult<List<MonthlyReportEntity>> GetMonthReport(string clearDate, int platformid = -1, int pageIndex = 1)
         //{
         //    return LiquidationData.GetMonthReport(clearDate, platformid, pageIndex);
+
+
         //}
 
         //public  JsonResult<List<DayReportEntity>> GetDayReport(string clearDate, int platformid, int pageIndex = 1)
