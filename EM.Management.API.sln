@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Management.API", "EM.Management.API\EM.Management.API.csproj", "{4025CAA0-5324-4E76-AA56-D842D318EA67}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Management.Core", "EM.Management.Core\EM.Management.Core.csproj", "{3ED7832B-0249-4C62-9403-65E67084439F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Management.Data.Redis", "EM.Management.Data.Redis\EM.Management.Data.Redis.csproj", "{991A93E5-423B-4264-99A9-BF3BB11E5DAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.Management.Web.Api", "EM.Management.Web.Api\EM.Management.Web.Api.csproj", "{4025CAA0-5324-4E76-AA56-D842D318EA67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4025CAA0-5324-4E76-AA56-D842D318EA67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4025CAA0-5324-4E76-AA56-D842D318EA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4025CAA0-5324-4E76-AA56-D842D318EA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4025CAA0-5324-4E76-AA56-D842D318EA67}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3ED7832B-0249-4C62-9403-65E67084439F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3ED7832B-0249-4C62-9403-65E67084439F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ED7832B-0249-4C62-9403-65E67084439F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{991A93E5-423B-4264-99A9-BF3BB11E5DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{991A93E5-423B-4264-99A9-BF3BB11E5DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{991A93E5-423B-4264-99A9-BF3BB11E5DAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4025CAA0-5324-4E76-AA56-D842D318EA67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4025CAA0-5324-4E76-AA56-D842D318EA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4025CAA0-5324-4E76-AA56-D842D318EA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4025CAA0-5324-4E76-AA56-D842D318EA67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

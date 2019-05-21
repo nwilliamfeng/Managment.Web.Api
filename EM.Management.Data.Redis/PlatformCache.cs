@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace EM.Management.Data.Redis
 {
     public class PlatformCache:CacheBase
     {
-        private const string KEY = "Platform";
+        private const string KEY = "set_platform";
 
-        public Task<IEnumerable<PlatformModel>> GetPlatforms()
+        public async Task<IEnumerable<PlatformModel>> GetPlatforms()
         {
-            if()
+            var values = await this.Database.SetMembersAsync(KEY);
+            return values.Select(x => JsonConvert.DeserializeObject<PlatformModel>(x));
         }
     }
 }

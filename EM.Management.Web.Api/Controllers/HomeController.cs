@@ -10,9 +10,9 @@ namespace EM.Management.API.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
 
-            return View();
+
+            return Content("ok");
         }
     }
 }
