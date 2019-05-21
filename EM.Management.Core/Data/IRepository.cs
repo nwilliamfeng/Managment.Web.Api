@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace EM.Management.Data
 {
-    public interface IPlatformRepository:IRepository
+    public interface IRepository
     {
-        Task<IEnumerable<PlatformModel>> GetPlatforms();
+        bool IsCache { get; }
     }
 }

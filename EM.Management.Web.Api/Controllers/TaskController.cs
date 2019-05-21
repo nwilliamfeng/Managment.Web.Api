@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace EM.Management.API.Controllers
+namespace EM.Management.Web.Controllers
 {
     public class TaskController : ApiController
     {

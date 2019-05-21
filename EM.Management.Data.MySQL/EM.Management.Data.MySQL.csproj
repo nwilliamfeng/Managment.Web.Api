@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3ED7832B-0249-4C62-9403-65E67084439F}</ProjectGuid>
+    <ProjectGuid>{C9D1A33F-11ED-41E8-9DCF-AEF461BDB079}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EM.Management</RootNamespace>
-    <AssemblyName>EM.Management.Core</AssemblyName>
+    <RootNamespace>EM.Management.Data.MySQL</RootNamespace>
+    <AssemblyName>EM.Management.Data.MySQL</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,26 +30,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.8\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\IPlatformRepository.cs" />
-    <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Model\DayReport.cs" />
-    <Compile Include="Model\EnumTaskSubType.cs" />
-    <Compile Include="Model\EnumTaskType.cs" />
-    <Compile Include="JsonResult.cs" />
-    <Compile Include="Model\PlatformModel.cs" />
+    <Compile Include="PlatformRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\TaskModel.cs" />
-    <Compile Include="Service\IPlatformService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EM.Management.Core\EM.Management.Core.csproj">
+      <Project>{3ed7832b-0249-4c62-9403-65e67084439f}</Project>
+      <Name>EM.Management.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace EM.Management.API.Controllers
+namespace EM.Management.Web.Controllers
 {
     public class PlatformController : ApiController
     {
@@ -17,5 +17,7 @@ namespace EM.Management.API.Controllers
             lst.Add(new PlatformModel { PlatformID = 2, Name = "证券", CreateTime = DateTime.Now, IsEnabled = 1 });
             return new JsonResult<List<PlatformModel>> { Data = lst, Count = lst.Count, StatusCode = 1 };
         }
+
+          
     }
 }

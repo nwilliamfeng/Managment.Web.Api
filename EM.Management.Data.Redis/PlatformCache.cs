@@ -7,9 +7,11 @@ using Newtonsoft.Json;
 
 namespace EM.Management.Data.Redis
 {
-    public class PlatformCache:CacheBase
+    public class PlatformCache:RedisCache
     {
         private const string KEY = "set_platform";
+
+      
 
         public async Task<IEnumerable<PlatformModel>> GetPlatforms()
         {

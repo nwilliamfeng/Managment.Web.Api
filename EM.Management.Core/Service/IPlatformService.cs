@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EM.Management.Data
+namespace EM.Management.Service
 {
-    public interface IPlatformRepository:IRepository
+    public interface IPlatformService
     {
         Task<IEnumerable<PlatformModel>> GetPlatforms();
     }
