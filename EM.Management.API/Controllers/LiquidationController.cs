@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using EM.Management.API.Models;
+
 
 namespace EM.Management.API.Controllers
 {
@@ -15,10 +15,10 @@ namespace EM.Management.API.Controllers
         //    return LiquidationData.GetMonthReport(clearDate, platformid, pageIndex);
         //}
 
-        public  JsonResult<List<DayReportEntity>> GetDayReport(string clearDate, int platformid, int pageIndex = 1)
-        {
-            return LiquidationData.GetDayReport(clearDate, platformid, pageIndex);
-        }
+        //public  JsonResult<List<DayReportEntity>> GetDayReport(string clearDate, int platformid, int pageIndex = 1)
+        //{
+        //    return LiquidationData.GetDayReport(clearDate, platformid, pageIndex);
+        //}
 
         //public static JsonResult<List<ClearpointflowEntity>> GetErrorClearPointFlow(string clearDate, int platformid, int pageIndex = 1)
         //{

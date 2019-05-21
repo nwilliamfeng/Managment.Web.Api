@@ -207,9 +207,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EM.Management.API.Models\EM.Management.API.Models.csproj">
-      <Project>{17aa7a0d-e0d0-4894-9d18-de0fadc681a4}</Project>
-      <Name>EM.Management.API.Models</Name>
+    <ProjectReference Include="..\EM.Management.Core\EM.Management.Core.csproj">
+      <Project>{3ed7832b-0249-4c62-9403-65e67084439f}</Project>
+      <Name>EM.Management.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

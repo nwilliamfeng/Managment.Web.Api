@@ -1,4 +1,4 @@
-﻿using EM.Management.API.Models;
+﻿ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +15,7 @@ namespace EM.Management.API.Controllers
         public bool AddTask([FromBody]TaskModel task)
         {
             Console.WriteLine(task);
-            throw new Exception("throw exeception");
-
+          
             return true;
         }
 
