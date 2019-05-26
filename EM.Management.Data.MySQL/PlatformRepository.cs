@@ -11,6 +11,11 @@ namespace EM.Management.Data.MySQL
     {
         public bool IsCache => false;
 
+        public Task<bool> AddPlatforms(params PlatformModel[] models)
+        {
+            return null;
+        }
+
         public Task<IEnumerable<PlatformModel>> GetPlatforms()
         {
             return Task.Run<IEnumerable<PlatformModel>>(() =>
@@ -22,5 +27,7 @@ namespace EM.Management.Data.MySQL
                 return lst;
             });
         }
+
+        
     }
 }

@@ -48,6 +48,9 @@
     <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Web.Entity" />
@@ -82,6 +85,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutofacWebapiConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\LiquidationController.cs" />
@@ -120,6 +124,10 @@
     <ProjectReference Include="..\EM.Management.Data.Redis\EM.Management.Data.Redis.csproj">
       <Project>{991a93e5-423b-4264-99a9-bf3bb11e5daa}</Project>
       <Name>EM.Management.Data.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EM.Management.Service\EM.Management.Service.csproj">
+      <Project>{264f5eed-846a-480e-abc1-36fa8d2295e8}</Project>
+      <Name>EM.Management.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
