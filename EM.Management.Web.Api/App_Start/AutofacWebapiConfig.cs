@@ -21,7 +21,7 @@ namespace EM.Management.Web
         }
 
 
-        public static void Initialize(HttpConfiguration config, IContainer container)
+        private static void Initialize(HttpConfiguration config, IContainer container)
         {
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
@@ -29,20 +29,22 @@ namespace EM.Management.Web
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
           
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-           
-           var amblys= Directory.GetFiles(HttpRuntime.AppDomainAppPath+"bin")
-                .Where(x=>x.Contains("EM.Management") &&  x.EndsWith(".dll"))
-                .ToList()
-                .Select(x=>Assembly.LoadFile(x));
-            amblys.ToList()
-                .ForEach(x =>
-                {
-                    if (x.GetTypes().Any(c => c.IsClass && !c.IsAbstract && c.Name.EndsWith("Service")))
-                        builder.RegisterAssemblyTypes(x).Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces();
-                });
+            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-       //     builder.RegisterAssemblyTypes(typeof(PlatformService).Assembly).Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces();
+            //var amblys = Directory.GetFiles(HttpRuntime.AppDomainAppPath + "bin")
+            //     .Where(x =>Path.GetFileName(x).Contains("EM.Management") && x.EndsWith(".dll"))
+            //     .ToList()
+            //     .Select(x => Assembly.LoadFile(x));
+            //amblys.ToList()
+            //    .ForEach(x =>
+            //    {
+            //        if (x.GetTypes().Any(c => c.IsClass && !c.IsAbstract && c.Name.EndsWith("Service")))
+            //            builder.RegisterAssemblyTypes(x).Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces();
+            //      else if (x.GetTypes().Any(c => c.IsClass && !c.IsAbstract && c.Name.EndsWith("Cache")))
+            //            builder.RegisterAssemblyTypes(x).Where(t => t.Name.EndsWith("Cache")).AsImplementedInterfaces();
+            //    });
+
+          //  builder.RegisterAssemblyTypes(typeof(PlatformService).Assembly).Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces();
 
             //builder.RegisterType<DbFactory>()
             //       .As<IDbFactory>()
@@ -53,7 +55,8 @@ namespace EM.Management.Web
             //       .InstancePerRequest();
 
             //Set the dependency resolver to be Autofac.  
-            Container = builder.Build();
+          //  Container = builder.Build();
+           Container = builder.RegistComponentsWithSpecifiedSuffix("Cache","Service");
 
             return Container;
         }

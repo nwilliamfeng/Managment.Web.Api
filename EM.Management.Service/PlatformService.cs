@@ -18,6 +18,7 @@ namespace EM.Management.Service
             this._platformRepositories = repositories;
         }
 
+
         /// <summary>
         /// 
         /// </summary>
