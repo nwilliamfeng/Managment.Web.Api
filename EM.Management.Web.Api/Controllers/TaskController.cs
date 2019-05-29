@@ -12,7 +12,7 @@ namespace EM.Management.Web.Controllers
     {
  
         [HttpPost]
-        public bool AddTask([FromBody]TaskModel task)
+        public JsonResult<bool> AddTask([FromBody]TaskModel task)
         {
             Console.WriteLine(task);
           
