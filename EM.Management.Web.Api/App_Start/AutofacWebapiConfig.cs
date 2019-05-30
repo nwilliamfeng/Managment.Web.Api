@@ -1,13 +1,12 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using EM.Management.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
-using System.IO;
+using log4net;
 
 namespace EM.Management.Web
 {
@@ -15,7 +14,7 @@ namespace EM.Management.Web
     {
         private static void Initialize(HttpConfiguration config)
         {
-            Initialize(config, RegisterServices(new ContainerBuilder()));
+            Initialize(config, RegisterServices(new ContainerBuilder()));  
         }
 
 
@@ -26,6 +25,7 @@ namespace EM.Management.Web
 
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
+           
             return  builder.RegistComponentsWithSpecifiedSuffix("Repository","Cache","Service");
         }
 

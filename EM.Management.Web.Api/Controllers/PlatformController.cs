@@ -18,12 +18,21 @@ namespace EM.Management.Web.Controllers
             this._platformService = platformService;
         }
 
-        public async Task<JsonResult<List<PlatformModel>>> GetPlatformList()
+        //public async Task<JsonResult<List<PlatformModel>>> GetPlatformList()
+        //{
+        //    var lst = await this._platformService.GetPlatforms();
+        //    return new JsonResult<List<PlatformModel>> { Data = lst.ToList(), Count = lst.Count(), StatusCode = 1 };         
+        //}
+
+
+        public async Task<IHttpActionResult> GetPlatformList()
         {
+
             var lst = await this._platformService.GetPlatforms();
-            return new JsonResult<List<PlatformModel>> { Data = lst.ToList(), Count = lst.Count(), StatusCode = 1 };         
+            throw new ApplicationException("ddd");
+            return this.JsonResult(lst.ToJsonData());
+
         }
 
-          
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EM.Management.Data;
+using log4net;
 
 namespace EM.Management.Service
 {
@@ -11,7 +12,7 @@ namespace EM.Management.Service
     {
         private readonly IEnumerable<IPlatformRepository> _platformRepositories;
 
-        public PlatformService(IEnumerable<IPlatformRepository> repositories)
+        public PlatformService( IEnumerable<IPlatformRepository> repositories)
         {
             if (repositories == null || repositories.Count() == 0)
                 throw new ArgumentNullException("未找到配置的数据仓库。");
@@ -29,6 +30,8 @@ namespace EM.Management.Service
             IEnumerable<PlatformModel> result = new List<PlatformModel>();
             if (this.Cache != null)
                 result =await this.Cache.GetPlatforms();
+            if (result.Count() > 0)
+                result.Log();
             if ( result.Count() > 0)
                 return result;
             var db = this.Db;
@@ -37,6 +40,7 @@ namespace EM.Management.Service
             result = await db.GetPlatforms();
             if (result.Count() > 0)
                 this.AppendToRedisAsync(result);
+          
             return result;
         }
 
@@ -45,9 +49,9 @@ namespace EM.Management.Service
         private IPlatformRepository Db => this._platformRepositories.FirstOrDefault(x => !x.IsCache);
 
 
-        private async void AppendToRedisAsync(IEnumerable<PlatformModel> platforms)
+        private  void AppendToRedisAsync(IEnumerable<PlatformModel> platforms)
         {
-          await  this.Cache?.AddPlatforms(platforms.ToArray());
+            this.Cache?.AddPlatforms(platforms.ToArray());
         }
         
     }
