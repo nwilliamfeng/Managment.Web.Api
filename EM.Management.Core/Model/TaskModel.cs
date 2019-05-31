@@ -43,7 +43,7 @@ namespace EM.Management
         
         public bool IsDel { get; set; }
         
-        public string UpdateTime { get; set; }
+        public DateTime UpdateTime { get; set; }
         
         public string TaskID { get; set; }
         
@@ -63,18 +63,32 @@ namespace EM.Management
         
         public int TotalLimit { get; set; }
         
-        public string BeginTime { get; set; }
+        public DateTime BeginTime { get; set; }
         
-        public string EndTime { get; set; }
+        public DateTime EndTime { get; set; }
         
         public string Operator { get; set; }
         
         public int Crc32 { get; set; }
         
-        public string CreateTime { get; set; }
+        public DateTime CreateTime { get; set; }
         
         public int DayLimit { get; set; }
         
         public int TagId { get; set; }
+
+        public bool IsNew => string.IsNullOrEmpty(this.TaskID);
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is TaskModel))
+                return false;
+            return this.TaskID == (obj as TaskModel).TaskID;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.TaskID==null?base.GetHashCode():this.TaskID.GetHashCode();
+        }
     }
 }

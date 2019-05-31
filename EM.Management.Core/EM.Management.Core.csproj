@@ -47,16 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\IPlatformRepository.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\ITaskRepository.cs" />
+    <Compile Include="Data\IPlatformRepository.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Model\DayReport.cs" />
     <Compile Include="Model\EnumTaskSubType.cs" />
     <Compile Include="Model\EnumTaskType.cs" />
     <Compile Include="Model\PlatformModel.cs" />
+    <Compile Include="Model\Query\QueryResult.cs" />
+    <Compile Include="Model\Query\QueryConditionWithTimeRange.cs" />
+    <Compile Include="Model\Query\QueryCondition.cs" />
+    <Compile Include="Model\Query\TaskQueryCondition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\TaskModel.cs" />
     <Compile Include="Service\IPlatformService.cs" />
+    <Compile Include="Service\ITaskService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,33 +4,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using EM.Management.Service;
 
 namespace EM.Management.Web.Controllers
 {
     public class TaskController : ApiController
     {
- 
-        [HttpPost]
-        public bool AddTask([FromBody]TaskModel task)
-        {
-            Console.WriteLine(task);
+        private ITaskService _taskService;
+        private IPlatformService _platformService;
 
-            return true;
+        public TaskController(ITaskService taskService,IPlatformService platformService)
+        {
+            this._taskService = taskService;
+            this._platformService = platformService;
         }
 
-       
+        [HttpPost]
+        public async Task<IHttpActionResult> AddOrUpdateTask([FromBody]TaskModel task)
+        {
+            var result =await  this._taskService.AddOrUpdate(task);
+            return this.JsonResult(JsonData.Success());
+        }
 
-        //public ActionResult LoadTasks(int pageSize = 10, int pageIndex = 1)
+
+
+        //public ActionResult LoadTasks(int platformId, string startTime, string endTime, int tagId = 0, string taskName = "", int pageIndex = 1, int pageSize = 20)
         //{
-        //    var tasks = new List<TaskModel>();
-        //    for (int i = 1; i < 23; i++)
-        //    {
-        //        tasks.Add(new TaskModel { TaskID = i.ToString(), BeginTime = DateTime.Now.ToString("yyyy-MM-dd"), EndTime = DateTime.Now.ToString("yyyy-MM-dd"), Description = "desc1", Name = "task" + i.ToString(), CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") });
-        //    }
-        //    return new JsonResult<List<TaskModel>> { data = tasks.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList(), count = tasks.Count, }.ToJsonActionResult();
-
+        //    var result = TaskCore.GetTaskList(platformId, startTime, endTime, tagId, taskName, pageIndex, pageSize);
+        //    return result.ToJsonActionResult();
         //}
+
+         
 
         //public ActionResult GetPlatforms()
         //{

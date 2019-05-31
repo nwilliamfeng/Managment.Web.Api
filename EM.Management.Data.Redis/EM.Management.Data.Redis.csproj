@@ -45,6 +45,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TaskCache.cs" />
     <Compile Include="RedisCache.cs" />
     <Compile Include="PlatformCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
