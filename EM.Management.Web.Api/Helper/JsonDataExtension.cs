@@ -9,27 +9,27 @@ namespace EM.Management.Web
     public static class JsonDataExtension
     {
 
-        public static JsonData  SetSuccess (this JsonData result)
+        public static JsonResultData  SetSuccess (this JsonResultData result)
         {
             result.StatusCode = StatusCodes.SUCCESS;
             return result;
         }
 
-        public static JsonData SetFail (this JsonData result, string message = null)
+        public static JsonResultData SetFail (this JsonResultData result, string message = null)
         {
             result.StatusCode = StatusCodes.FAIL;
             result.Message = message;
             return result;
         }
 
-        public static JsonData ToJsonData<T>(this System.Collections.Generic.IEnumerable<T> lst)
+        public static JsonResultData ToJsonData<T>(this System.Collections.Generic.IEnumerable<T> lst)
         {
-            return new JsonData { Count = lst.Count(), Data = lst.ToList(), StatusCode = StatusCodes.SUCCESS };
+            return new JsonResultData { Count = lst.Count(), Data = lst.ToList(), StatusCode = StatusCodes.SUCCESS };
         }
 
-        public static JsonData ToJsonData(this Exception ex)
+        public static JsonResultData ToJsonData(this Exception ex)
         {
-            return new JsonData { Data = null, StatusCode = StatusCodes.ERROR, Message = ex.Message };
+            return new JsonResultData { Data = null, StatusCode = StatusCodes.ERROR, Message = ex.Message };
         }
 
     }

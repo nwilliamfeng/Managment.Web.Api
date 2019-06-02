@@ -93,7 +93,6 @@
     </Compile>
     <Compile Include="Helper\AutofacExtension.cs" />
     <Compile Include="Helper\JsonResultExtension.cs" />
-    <Compile Include="Helper\JsonData.cs" />
     <Compile Include="Helper\JsonDataExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusCodes.cs" />

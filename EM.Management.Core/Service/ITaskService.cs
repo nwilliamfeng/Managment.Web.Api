@@ -9,8 +9,10 @@ namespace EM.Management.Service
 {
     public interface ITaskService
     {
-        Task<bool> AddOrUpdate(TaskModel task);
+        Task<JsonResultData<TaskModel>> AddOrUpdate(TaskModel task);
 
-        Task<QueryResult<TaskModel>> GetTasks(TaskQueryCondition conditon);
+        Task<JsonResultData< QueryResult<TaskModel>>> GetTasks(TaskQueryCondition conditon);
+
+        Task<JsonResultData<TaskModel>> Load(string taskId);
     }
 }

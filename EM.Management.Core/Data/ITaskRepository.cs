@@ -11,7 +11,9 @@ namespace EM.Management.Data
     {
         Task<QueryResult<TaskModel>> GetTasks(TaskQueryCondition conditon);
 
-        Task<bool> AddOrUpdateTask(TaskModel task);
- 
+        Task<TaskModel> AddOrUpdateTask(TaskModel task);
+
+        Task<TaskModel> Load(string taskId);
+
     }
 }

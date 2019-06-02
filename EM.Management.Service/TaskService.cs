@@ -24,14 +24,23 @@ namespace EM.Management.Service
         private ITaskRepository Db => this._taskRepositories.FirstOrDefault(x => !x.IsCache);
 
 
-        public Task<bool> AddOrUpdate(TaskModel task)
+        public async Task<JsonResultData<TaskModel>> AddOrUpdate(TaskModel task)
         {
-            
+            var result = await this.Cache.AddOrUpdateTask(task);
+            result = await this.Db.AddOrUpdateTask(task);
+            return result.ToJson();
         }
 
-        public Task<QueryResult<TaskModel>> GetTasks(TaskQueryCondition conditon)
+        public async Task<JsonResultData< QueryResult<TaskModel>>> GetTasks(TaskQueryCondition conditon)
         {
-            throw new NotImplementedException();
+            var result =await this.Db.GetTasks(conditon);
+            return result.ToJson();
+        }
+
+        public async Task<JsonResultData<TaskModel>> Load(string taskId)
+        {
+            var result =await this.Cache.Load(taskId);
+            return result.ToJson();
         }
     }
 }

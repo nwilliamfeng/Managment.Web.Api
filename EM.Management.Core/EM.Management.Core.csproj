@@ -50,6 +50,8 @@
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\ITaskRepository.cs" />
     <Compile Include="Data\IPlatformRepository.cs" />
+    <Compile Include="Helper\JsonResultDataExtension.cs" />
+    <Compile Include="JsonResultData.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Model\DayReport.cs" />
     <Compile Include="Model\EnumTaskSubType.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Model\TaskModel.cs" />
     <Compile Include="Service\IPlatformService.cs" />
     <Compile Include="Service\ITaskService.cs" />
+    <Compile Include="StatusCodes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

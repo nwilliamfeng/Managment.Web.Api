@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EM.Management.Data;
-using log4net;
-
+ 
 namespace EM.Management.Service
 {
     public class PlatformService : IPlatformService

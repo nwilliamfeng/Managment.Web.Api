@@ -10,6 +10,8 @@ using EM.Management.Service;
 
 namespace EM.Management.Web.Controllers
 {
+    [Authorize]
+    https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/authentication-filters
     public class TaskController : ApiController
     {
         private ITaskService _taskService;
@@ -25,7 +27,7 @@ namespace EM.Management.Web.Controllers
         public async Task<IHttpActionResult> AddOrUpdateTask([FromBody]TaskModel task)
         {
             var result =await  this._taskService.AddOrUpdate(task);
-            return this.JsonResult(JsonData.Success());
+            return this.JsonResult(result);
         }
 
 

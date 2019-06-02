@@ -23,14 +23,15 @@ namespace EM.Management.Data.MySQL
 
         }
 
-        public Task<bool> AddOrUpdateTask(TaskModel task)
+        public Task<TaskModel> AddOrUpdateTask(TaskModel task)
         {
             return Task.Run(() =>
             {
                 if (_cache.Contains(task))
-                    return false;
-                _cache.Add(task);
-                return true;
+                    _cache[_cache.IndexOf(task)] = task;
+                else
+                    _cache.Add(task);
+                return task;
             });
         }
 
@@ -53,6 +54,11 @@ namespace EM.Management.Data.MySQL
                 var lst = this._cache.Where(pred).ToList();
                 return new QueryResult<TaskModel> { Items = lst.Skip((conditon.PageIndex - 1) * conditon.PageSize).Take(conditon.PageSize).ToList(), TotalCount = lst.Count };
             });
+        }
+
+        public Task<TaskModel> Load(string taskId)
+        {
+            return Task.Run(()=> this._cache.FirstOrDefault(x => x.TaskID == taskId));
         }
     }
 }
