@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonUtils\CommonUtils.csproj">
+      <Project>{4df7398d-da74-4bb2-9841-716b42318080}</Project>
+      <Name>CommonUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EM.Management.Core\EM.Management.Core.csproj">
       <Project>{3ed7832b-0249-4c62-9403-65e67084439f}</Project>
       <Name>EM.Management.Core</Name>

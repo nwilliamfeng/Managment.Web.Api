@@ -71,5 +71,11 @@
     <Compile Include="StatusCodes.cs" />
     <Compile Include="Model\LoginInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonUtils\CommonUtils.csproj">
+      <Project>{4df7398d-da74-4bb2-9841-716b42318080}</Project>
+      <Name>CommonUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

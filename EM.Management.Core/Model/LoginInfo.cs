@@ -14,6 +14,15 @@ namespace EM.Management
 
         public DateTime LoginTime { get; set; }
 
-        public int Hash { get; set; }
+        public string TokenKey { get; set; }
+
+
+        public string ToToken()
+        {
+            if (string.IsNullOrEmpty(UserId) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(TokenKey))
+                throw new InvalidOperationException("有空的值，无法生成token");
+            var hc = UserId.GetHashCode() * 137 + Password.GetHashCode() * 37 + LoginTime.GetHashCode() * 13 + TokenKey.GetHashCode();
+            return CommonUtils.EncryptUtils.DESEnCode(hc.ToString(), TokenKey);
+        }
     }
 }

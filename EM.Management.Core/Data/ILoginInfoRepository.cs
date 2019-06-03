@@ -9,7 +9,9 @@ namespace EM.Management.Data
 {
     public interface ILoginInfoRepository : IRepository
     {
-        Task<LoginInfo> Load(string userId, string token);
+        Task<LoginInfo> Load(string userId);
+
+        Task<bool> Validate(string userId,string token);
 
         Task<bool> Save(LoginInfo loginInfo);
     }
