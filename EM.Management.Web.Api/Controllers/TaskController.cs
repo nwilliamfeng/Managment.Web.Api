@@ -10,8 +10,8 @@ using EM.Management.Service;
 
 namespace EM.Management.Web.Controllers
 {
-    [Authorize]
-    https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/authentication-filters
+
+    [Authentication]
     public class TaskController : ApiController
     {
         private ITaskService _taskService;

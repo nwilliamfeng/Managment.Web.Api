@@ -28,7 +28,7 @@ namespace EM.Management.Web.Controllers
         public async Task<IHttpActionResult> GetPlatformList()
         {
             var lst = await this._platformService.GetPlatforms();        
-            return this.JsonResult(lst.ToJsonData());
+            return this.JsonResult(lst.ToJson());
         }
 
     }

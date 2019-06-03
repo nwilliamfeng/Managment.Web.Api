@@ -23,6 +23,7 @@ namespace EM.Management.Web
 
             config.Filters.Add(new GlobalExceptionFilter() );
             config.Filters.Add(new GlobalLogFilter());
+        //    config.Filters.Add(new CustomAuthenticationFilter());
         }
     }
 }

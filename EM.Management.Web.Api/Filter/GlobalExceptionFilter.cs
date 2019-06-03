@@ -32,7 +32,7 @@ namespace EM.Management.Web.Filter
             var content = $"when call url:{actionExecutedContext.Request.RequestUri},params:{JsonConvert.SerializeObject(actionExecutedContext.ActionContext.ActionArguments)} , raise an exception: ";
 
             log.Error(content, actionExecutedContext.Exception);
-            var actionResult = actionExecutedContext.Request.JsonResult(actionExecutedContext.Exception.ToJsonData());
+            var actionResult = actionExecutedContext.Request.JsonResult(actionExecutedContext.Exception.ToJson());
             var msg =await  actionResult .ExecuteAsync(cancellationToken);
             msg.StatusCode = HttpStatusCode.InternalServerError;
             actionExecutedContext.Response = msg;

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\LoggerExtension.cs" />
+    <Compile Include="LoginInfoCache.cs" />
     <Compile Include="TaskCache.cs" />
     <Compile Include="RedisCache.cs" />
     <Compile Include="PlatformCache.cs" />
