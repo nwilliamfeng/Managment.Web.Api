@@ -9,11 +9,11 @@ using StackExchange.Redis;
 
 namespace EM.Management.Data.Redis
 {
-    public class TaskCache : RedisCache, ITaskRepository
+    public class PointTaskCache : RedisCache, IPointTaskRepository
     {
         private const string KEY = "hash_tasks";
 
-        public async Task<TaskModel> AddOrUpdateTask(TaskModel task)
+        public async Task<PointTask> AddOrUpdateTask(PointTask task)
         {
             var action = task.IsNew ? "create" : "modify";
             if (task.IsNew)
@@ -26,22 +26,22 @@ namespace EM.Management.Data.Redis
 
         }
 
-        public async Task<IEnumerable<PlatformModel>> GetPlatforms()
+        public async Task<IEnumerable<Platform>> GetPlatforms()
         {
             var values = await this.Database.SetMembersAsync(KEY);
-            return values.Select(x => JsonConvert.DeserializeObject<PlatformModel>(x));
+            return values.Select(x => JsonConvert.DeserializeObject<Platform>(x));
         }
 
-        public Task<QueryResult<TaskModel>> GetTasks(TaskQueryCondition conditon)
+        public Task<QueryResult<PointTask>> GetTasks(TaskQueryCondition conditon)
         {
-            return Task.Run(() => new QueryResult<TaskModel>());
+            return Task.Run(() => new QueryResult<PointTask>());
         }
 
-        public async Task<TaskModel> Load(string taskId)
+        public async Task<PointTask> Load(string taskId)
         {
             var value = await this.Database.HashGetAsync(KEY, taskId);
             if (!string.IsNullOrEmpty(value))
-                return JsonConvert.DeserializeObject<TaskModel>(value);
+                return JsonConvert.DeserializeObject<PointTask>(value);
             return null;
 
         }

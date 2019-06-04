@@ -47,9 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IPointTaskTagRepository.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\ILoginInfoRepository.cs" />
-    <Compile Include="Data\ITaskRepository.cs" />
+    <Compile Include="Data\IPointTaskRepository.cs" />
     <Compile Include="Data\IPlatformRepository.cs" />
     <Compile Include="Helper\JsonResultDataExtension.cs" />
     <Compile Include="JsonResultData.cs" />
@@ -57,17 +58,18 @@
     <Compile Include="Model\DayReport.cs" />
     <Compile Include="Model\EnumTaskSubType.cs" />
     <Compile Include="Model\EnumTaskType.cs" />
-    <Compile Include="Model\PlatformModel.cs" />
+    <Compile Include="Model\LoginResult.cs" />
+    <Compile Include="Model\Platform.cs" />
     <Compile Include="Model\Query\QueryResult.cs" />
     <Compile Include="Model\Query\QueryConditionWithTimeRange.cs" />
     <Compile Include="Model\Query\QueryCondition.cs" />
     <Compile Include="Model\Query\TaskQueryCondition.cs" />
+    <Compile Include="Model\PointTaskTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\TaskModel.cs" />
+    <Compile Include="Model\PointTask.cs" />
     <Compile Include="Service\IAuthService.cs" />
-    <Compile Include="Service\ILoginInfoService.cs" />
     <Compile Include="Service\IPlatformService.cs" />
-    <Compile Include="Service\ITaskService.cs" />
+    <Compile Include="Service\IPointTaskService.cs" />
     <Compile Include="StatusCodes.cs" />
     <Compile Include="Model\LoginInfo.cs" />
   </ItemGroup>

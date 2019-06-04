@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace EM.Guba.Utils
+namespace CommonUtils
 {
     /// <summary>
     /// 配置管理工具类

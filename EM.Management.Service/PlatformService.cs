@@ -23,10 +23,10 @@ namespace EM.Management.Service
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<PlatformModel>> GetPlatforms()
+        public async Task<IEnumerable<Platform>> GetPlatforms()
         {
             
-            IEnumerable<PlatformModel> result = new List<PlatformModel>();
+            IEnumerable<Platform> result = new List<Platform>();
             if (this.Cache != null)
                 result =await this.Cache.GetPlatforms();
             if (result.Count() > 0)
@@ -48,7 +48,7 @@ namespace EM.Management.Service
         private IPlatformRepository Db => this._platformRepositories.FirstOrDefault(x => !x.IsCache);
 
 
-        private  void AppendToRedisAsync(IEnumerable<PlatformModel> platforms)
+        private  void AppendToRedisAsync(IEnumerable<Platform> platforms)
         {
             this.Cache?.AddPlatforms(platforms.ToArray());
         }

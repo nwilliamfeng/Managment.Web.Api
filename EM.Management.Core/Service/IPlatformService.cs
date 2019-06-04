@@ -8,6 +8,6 @@ namespace EM.Management.Service
 {
     public interface IPlatformService
     {
-        Task<IEnumerable<PlatformModel>> GetPlatforms();
+        Task<IEnumerable<Platform>> GetPlatforms();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EM.Guba.Utils
+namespace CommonUtils
 {
     /// <summary>
     /// 类型转换，格式工具类

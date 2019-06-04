@@ -22,7 +22,7 @@ namespace EM.Management
             return result;
         }
 
-        public static JsonResultData<T> ToJson<T>(this T obj)
+        public static JsonResultData<T> ToJsonResultData<T>(this T obj)
         {
             return new JsonResultData<T> {   Data = obj, StatusCode = StatusCodes.SUCCESS };
         }
@@ -32,14 +32,14 @@ namespace EM.Management
             return new JsonResultData<string> { Data = ex.StackTrace, StatusCode = StatusCodes.ERROR, Message = ex.Message };
         }
 
-        public static JsonResultData<bool> ToJson(bool result,string message=null)
+        public static JsonResultData<bool> ToJson(this bool result,string message=null)
         {
             return new JsonResultData<bool> { Data = result, StatusCode =result? StatusCodes.SUCCESS:StatusCodes.FAIL,Message=message };
         }
 
-         
+       
 
-        public static JsonResultData<bool> ToJsonWithError(string message = null)
+        public static JsonResultData<bool> ToJsonWithError(this string message)
         {
             return new JsonResultData<bool> { Data = false, Message = message, StatusCode = StatusCodes.ERROR };
         }

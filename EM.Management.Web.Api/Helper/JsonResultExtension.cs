@@ -15,7 +15,7 @@ namespace EM.Management.Web
         {
             return new JsonSerializerSettings
             {
-                DateFormatString = "yyyy-MM-dd hh:mm:ss",
+                DateFormatString = "yyyy-MM-dd HH:mm:ss",
                 ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
             };
         }
@@ -29,12 +29,8 @@ namespace EM.Management.Web
 
         public static IHttpActionResult JsonResult<T>(this HttpRequestMessage httpRequestMsg, T data)
         {
-            var setting = new JsonSerializerSettings
-            {
-                DateFormatString = "yyyy-MM-dd hh:mm:ss",
-                ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
-            };
-            return new JsonResult<T>(data, setting, System.Text.Encoding.UTF8, httpRequestMsg);
+           
+            return new JsonResult<T>(data, GetSettings(), System.Text.Encoding.UTF8, httpRequestMsg);
 
         }
     }

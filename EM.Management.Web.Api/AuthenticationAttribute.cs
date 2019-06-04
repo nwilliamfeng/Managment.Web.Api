@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Filters;
+using Autofac;
+using EM.Management.Service;
 
 namespace EM.Management.Web
 {
@@ -66,47 +68,36 @@ namespace EM.Management.Web
             return Task.FromResult(0);
         }
 
-        private Task<IPrincipal> AuthenticateAsync(HttpRequestMessage request)
+        private async Task<IPrincipal> AuthenticateAsync(HttpRequestMessage request)
         {
-            return Task.Run<IPrincipal>(() =>
+#if DEBUG
+            var testIdentity = new ClaimsIdentity("LoanCookie");
+            testIdentity.AddClaim(new Claim(ClaimTypes.Name, "test"));
+            return new ClaimsPrincipal(testIdentity);
+#endif
+            CookieHeaderValue tokenCookie = request.Headers.GetCookies("accessToken").FirstOrDefault();
+            CookieHeaderValue idCookie = request.Headers.GetCookies("userId").FirstOrDefault();
+            if (tokenCookie == null || string.IsNullOrWhiteSpace(tokenCookie["accessToken"].Value) || idCookie == null || string.IsNullOrWhiteSpace(idCookie["userId"].Value))
+                return null;
+
+            var token = tokenCookie["accessToken"].Value;
+            var userId = idCookie["userId"].Value;
+
+            //验证用户合法性，如果合法，构建声明式安全主题权限模式并返回，若用户验证不通过返回空
+            var isValid = false;
+            using (var scope = AutofacWebapiConfig.Container.BeginLifetimeScope())
             {
-                CookieHeaderValue tokenCookie = request.Headers.GetCookies("token").FirstOrDefault();
-               
-                if (tokenCookie == null || string.IsNullOrWhiteSpace(tokenCookie["token"].Value))
-                {
-                    return null;
-                }
-
-                string token = tokenCookie["token"].Value;
-
-                //ClientDTO client = null;
-                ////此处从Redis服务器中取出指定用户，各位可以根据需要自行更换
-                //using (ICache cache = ObjectContainer.Current.Resolve<ICacheFactory>().CreateCache())
-                //{
-                //    client = cache.Get<ClientDTO>(RedisTables.CLIENT, mobile);
-                //}
-                ////验证用户合法性，如果合法，构建声明式安全主题权限模式并返回，若用户验证不通过返回空
-                //if (client != null && string.Equals(token, Md5Helper.MD5(string.Format("{0}{1}", mobile, client.MsgCode), 32), StringComparison.Ordinal))
-                //{
-                //    IEnumerable<Claim> claims = new List<Claim>()
-                //        {
-                //            new Claim(ClaimTypes.Name, mobile)
-                //        };
-                //    var identity = new ClaimsIdentity("LoanCookie");
-                //    identity.AddClaims(claims);
-                //    return new ClaimsPrincipal(identity);
-                //}
-
-
-
-
+                var authService = scope.Resolve<IAuthService>();
+                isValid = (await authService.Validate(userId, token)).Data;
+            }
+            if (isValid)
+            {
                 var identity = new ClaimsIdentity("LoanCookie");
-                ;
                 identity.AddClaim(new Claim(ClaimTypes.Name, token));
                 var result = new ClaimsPrincipal(identity);
-                 return result;
-
-            });
+                return result;
+            }
+            return null;
         }
     }
 }

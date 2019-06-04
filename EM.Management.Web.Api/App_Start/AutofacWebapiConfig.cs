@@ -12,6 +12,8 @@ namespace EM.Management.Web
 {
     public class AutofacWebapiConfig
     {
+        public static IContainer Container { get; private set; }
+
         private static void Initialize(HttpConfiguration config)
         {
             Initialize(config, RegisterServices(new ContainerBuilder()));  
@@ -26,7 +28,8 @@ namespace EM.Management.Web
         private static IContainer RegisterServices(ContainerBuilder builder)
         {
            
-            return  builder.RegistComponentsWithSpecifiedSuffix("Repository","Cache","Service");
+            Container=  builder.RegistComponentsWithSpecifiedSuffix("Repository","Cache","Service");
+            return Container;
         }
 
         public static void Run()

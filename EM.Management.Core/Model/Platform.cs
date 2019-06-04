@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EM.Management
 {
-    public class PlatformModel
+    public class Platform
     {
         /// <summary>
         /// 平台ID

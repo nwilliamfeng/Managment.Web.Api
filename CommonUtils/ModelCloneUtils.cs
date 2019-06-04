@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace EM.Guba.Utils
+namespace CommonUtils
 {
     /// <summary>
     /// 实体复制工具类

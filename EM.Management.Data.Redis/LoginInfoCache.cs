@@ -11,24 +11,19 @@ namespace EM.Management.Data.Redis
     public class LoginInfoCache : RedisCache, ILoginInfoRepository
     {
      
-        private const string KEY = "hash_loginInfo_list";
+        private const string KEY = "hash_loginInfos";
  
         public async Task<LoginInfo> Load(string userId)
         {
             if (!this.Database.HashExists(KEY, userId))
                 return null;
             var value =await this.Database.HashGetAsync(KEY,userId);
-            return JsonConvert.DeserializeObject<LoginInfo>( value);
-        
+            return JsonConvert.DeserializeObject<LoginInfo>( value);        
         }
-
-
 
         public async Task<bool> Save(LoginInfo loginInfo)
         {
-            return await this.Database.HashSetAsync(KEY, loginInfo.UserId, JsonConvert.SerializeObject(loginInfo));
-       
-
+            return await this.Database.HashSetAsync(KEY, loginInfo.UserId, JsonConvert.SerializeObject(loginInfo));       
         }
 
         public async Task<bool> Validate(string userId, string token)
@@ -36,9 +31,9 @@ namespace EM.Management.Data.Redis
             var login = await this.Load(userId);
             if (login == null)
                 return false;
-            
-             return login.ToToken()==token;
-             
+            if ((DateTime.Now - login.LoginTime).TotalSeconds > 24 * 3600) //过期
+                return false;
+             return login.GetAccessToken()==token;             
         }
     }
 }

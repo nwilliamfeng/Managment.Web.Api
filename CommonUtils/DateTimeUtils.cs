@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EM.Guba.Utils
+namespace CommonUtils
 {
     /// <summary>
     /// 时间操作类

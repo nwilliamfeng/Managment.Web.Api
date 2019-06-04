@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EM.Guba.Utils
+namespace CommonUtils
 {
     /// <summary>
     /// 唯一id生成器

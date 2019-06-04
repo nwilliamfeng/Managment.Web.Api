@@ -8,22 +8,22 @@ using EM.Management.Model;
 
 namespace EM.Management.Data.MySQL
 {
-    public class TaskRepository : ITaskRepository
+    public class PointTaskRepository : IPointTaskRepository
     {
-        private List<TaskModel> _cache = new List<TaskModel>();
+        private List<PointTask> _cache = new List<PointTask>();
 
         public bool IsCache => false;
 
-        public TaskRepository()
+        public PointTaskRepository()
         {
             for (var i = 0; i < 35; i++)
             {
-                _cache.Add(new TaskModel { TaskID = $"{i}", TaskExpireDays = 10, CreateTime = DateTime.Now, BeginTime = DateTime.Now, Name = $"任务{i}", PlatformID = 1 });
+                _cache.Add(new PointTask { TaskID = $"{i}", TaskExpireDays = 10, CreateTime = DateTime.Now, BeginTime = DateTime.Now, Name = $"任务{i}", PlatformID = 1 });
             }
 
         }
 
-        public Task<TaskModel> AddOrUpdateTask(TaskModel task)
+        public Task<PointTask> AddOrUpdateTask(PointTask task)
         {
             return Task.Run(() =>
             {
@@ -36,11 +36,11 @@ namespace EM.Management.Data.MySQL
         }
 
 
-        public Task<QueryResult<TaskModel>> GetTasks(TaskQueryCondition conditon)
+        public Task<QueryResult<PointTask>> GetTasks(TaskQueryCondition conditon)
         {
             return Task.Run(() =>
             {
-                Func<TaskModel, bool> pred = x =>
+                Func<PointTask, bool> pred = x =>
                 {
                     var result = true;
                     if (conditon.EndTime > conditon.StartTime)
@@ -52,11 +52,11 @@ namespace EM.Management.Data.MySQL
                     return result;
                 };
                 var lst = this._cache.Where(pred).ToList();
-                return new QueryResult<TaskModel> { Items = lst.Skip((conditon.PageIndex - 1) * conditon.PageSize).Take(conditon.PageSize).ToList(), TotalCount = lst.Count };
+                return new QueryResult<PointTask> { Items = lst.Skip((conditon.PageIndex - 1) * conditon.PageSize).Take(conditon.PageSize).ToList(), TotalCount = lst.Count };
             });
         }
 
-        public Task<TaskModel> Load(string taskId)
+        public Task<PointTask> Load(string taskId)
         {
             return Task.Run(()=> this._cache.FirstOrDefault(x => x.TaskID == taskId));
         }

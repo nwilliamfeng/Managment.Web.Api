@@ -9,6 +9,7 @@ using EM.Management.Service;
 
 namespace EM.Management.Web.Controllers
 {
+    [Authentication]
     public class PlatformController : ApiController
     {
         private IPlatformService _platformService;
@@ -28,8 +29,9 @@ namespace EM.Management.Web.Controllers
         public async Task<IHttpActionResult> GetPlatformList()
         {
             var lst = await this._platformService.GetPlatforms();        
-            return this.JsonResult(lst.ToJson());
+            return this.JsonResult(lst.ToJsonResultData());
         }
 
+      
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EM.Management
 {
-    public class TaskModel
+    public class PointTask
     {
        
         public string TaskStrategyID { get; set; }
@@ -81,9 +81,9 @@ namespace EM.Management
 
         public override bool Equals(object obj)
         {
-            if (!(obj is TaskModel))
+            if (!(obj is PointTask))
                 return false;
-            return this.TaskID == (obj as TaskModel).TaskID;
+            return this.TaskID == (obj as PointTask).TaskID;
         }
 
         public override int GetHashCode()

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace EM.GuBaAPI.Utils
+namespace CommonUtils
 {
     /// <summary>
     /// ubb 处理工具类

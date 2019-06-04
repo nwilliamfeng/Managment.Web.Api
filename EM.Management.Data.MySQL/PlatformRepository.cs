@@ -11,19 +11,19 @@ namespace EM.Management.Data.MySQL
     {
         public bool IsCache => false;
 
-        public Task<bool> AddPlatforms(params PlatformModel[] models)
+        public Task<bool> AddPlatforms(params Platform[] models)
         {
             return null;
         }
 
-        public Task<IEnumerable<PlatformModel>> GetPlatforms()
+        public Task<IEnumerable<Platform>> GetPlatforms()
         {
-            return Task.Run<IEnumerable<PlatformModel>>(() =>
+            return Task.Run<IEnumerable<Platform>>(() =>
             {
-                var lst = new List<PlatformModel>();
-                lst.Add(new PlatformModel { PlatformID = 0, Name = "全部平台", CreateTime = DateTime.Now, IsEnabled = 1 });
-                lst.Add(new PlatformModel { PlatformID = 1, Name = "基金", CreateTime = DateTime.Now, IsEnabled = 1 });
-                lst.Add(new PlatformModel { PlatformID = 2, Name = "证券", CreateTime = DateTime.Now, IsEnabled = 1 });
+                var lst = new List<Platform>();
+                lst.Add(new Platform { PlatformID = 0, Name = "全部平台", CreateTime = DateTime.Now, IsEnabled = 1 });
+                lst.Add(new Platform { PlatformID = 1, Name = "基金", CreateTime = DateTime.Now, IsEnabled = 1 });
+                lst.Add(new Platform { PlatformID = 2, Name = "证券", CreateTime = DateTime.Now, IsEnabled = 1 });
                 return lst;
             });
         }
