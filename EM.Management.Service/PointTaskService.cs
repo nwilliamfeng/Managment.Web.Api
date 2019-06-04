@@ -8,11 +8,11 @@ using EM.Management.Data;
 
 namespace EM.Management.Service
 {
-    public class TaskService : IPointTaskService
+    public class PointTaskService : IPointTaskService
     {
         private IEnumerable<IPointTaskRepository> _taskRepositories;
 
-        public TaskService(IEnumerable<IPointTaskRepository> taskRepositories)
+        public PointTaskService(IEnumerable<IPointTaskRepository> taskRepositories)
         {
             if (taskRepositories == null || taskRepositories.Count() < 2)
                 throw new ArgumentException("请配置正确的TaskRepository。");

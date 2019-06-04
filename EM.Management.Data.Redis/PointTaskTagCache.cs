@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommonUtils;
+using Newtonsoft.Json;
 
 namespace EM.Management.Data.Redis
 {
@@ -15,27 +16,25 @@ namespace EM.Management.Data.Redis
 
         public async Task<bool> AddOrUpdate(PointTaskTag taskTag)
         {
-
-
             var action = taskTag.Id == 0 ? "create" : "modify";
             if (taskTag.Id == 0)
-                taskTag.Id  =DateTime.Now.ToUnixTime();
+                taskTag.Id=(int)DateTime.Now.ToUnixTime();
             else if (!this.Database.HashExists(KEY, taskTag.Id))
                 throw new InvalidOperationException("不存在的taskTag");
             var result = await this.Database.HashSetAsync(KEY, taskTag.Id, JsonConvert.SerializeObject(taskTag));
             $"{action} taskTag : {Newtonsoft.Json.JsonConvert.SerializeObject(taskTag)} , the result is {result}".Log();
-            return task;
+            return result;
 
         }
 
-        public Task<PointTaskTag> Load(int tagId)
-        {
-            return Task.Run(() => lst.FirstOrDefault(x => x.Id == tagId));
-        }
+        
 
-        public Task<IEnumerable<PointTaskTag>> LoadAll()
+        public async Task<IEnumerable<PointTaskTag>> LoadAll()
         {
-            return Task.Run<IEnumerable<PointTaskTag>>(() => lst);
+            var hes = await this.Database.HashGetAllAsync(KEY);
+            if (hes == null || hes.Count() == 0)
+                return new PointTaskTag[] { };
+            return hes.Select(x => JsonConvert.DeserializeObject<PointTaskTag>(x.Value));
         }
     }
 }

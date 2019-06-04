@@ -17,11 +17,13 @@ namespace EM.Management.Web.Controllers
     {
         private IPointTaskService _taskService;
         private IPlatformService _platformService;
+        private IPointTaskTagService _taskTagService;
 
-        public TaskController(IPointTaskService taskService,IPlatformService platformService)
+        public TaskController(IPointTaskService taskService,IPlatformService platformService,IPointTaskTagService taskTagService)
         {
             this._taskService = taskService;
             this._platformService = platformService;
+            this._taskTagService = taskTagService;
         }
 
         [HttpPost]

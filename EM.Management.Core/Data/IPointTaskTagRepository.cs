@@ -13,7 +13,7 @@ namespace EM.Management.Data
 
         Task<bool> AddOrUpdate(PointTaskTag taskTag);
 
-        Task<PointTaskTag> Load(int tagId);
+       
 
     }
 }

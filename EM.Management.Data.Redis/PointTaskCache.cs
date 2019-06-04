@@ -26,12 +26,7 @@ namespace EM.Management.Data.Redis
 
         }
 
-        public async Task<IEnumerable<Platform>> GetPlatforms()
-        {
-            var values = await this.Database.SetMembersAsync(KEY);
-            return values.Select(x => JsonConvert.DeserializeObject<Platform>(x));
-        }
-
+      
         public Task<QueryResult<PointTask>> GetTasks(TaskQueryCondition conditon)
         {
             return Task.Run(() => new QueryResult<PointTask>());

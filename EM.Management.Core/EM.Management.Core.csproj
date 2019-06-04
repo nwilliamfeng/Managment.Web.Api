@@ -70,6 +70,7 @@
     <Compile Include="Service\IAuthService.cs" />
     <Compile Include="Service\IPlatformService.cs" />
     <Compile Include="Service\IPointTaskService.cs" />
+    <Compile Include="Service\IPointTaskTagService.cs" />
     <Compile Include="StatusCodes.cs" />
     <Compile Include="Model\LoginInfo.cs" />
   </ItemGroup>
