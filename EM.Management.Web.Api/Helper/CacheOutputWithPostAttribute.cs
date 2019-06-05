@@ -7,6 +7,9 @@ using WebApi.OutputCache.V2;
 
 namespace EM.Management.Web
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CacheOutputWithPostAttribute: CacheOutputAttribute
     {
         private static Dictionary<string, List<object>> paramDic = new Dictionary<string, List<object>>();
@@ -30,12 +33,12 @@ namespace EM.Management.Web
                     paramDic[action] = currParas;
                     return false;
                 }
-                if(!oldParas.Any(x => !currParas.Contains(x)))
+                if(oldParas.Any(x => !currParas.Contains(x)))
                 {
                     paramDic[action] = currParas;
                     return false;
                 }
-                return base.IsCachingAllowed(actionContext,anonymousOnly);   
+                return true;   
             }
 
         }

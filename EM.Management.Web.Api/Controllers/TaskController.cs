@@ -34,7 +34,7 @@ namespace EM.Management.Web.Controllers
 
 
         [HttpPost]
-        [CacheOutputWithPostAttribute(ServerTimeSpan = 22)]
+        [CacheOutputWithPost(ServerTimeSpan = 22)]
         public async Task<IHttpActionResult> Tasks([FromBody]TaskQueryCondition qc)
         {
             var result = await this._taskService.GetTasks(qc);
