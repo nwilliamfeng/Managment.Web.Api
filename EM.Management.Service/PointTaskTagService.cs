@@ -30,9 +30,15 @@ namespace EM.Management.Service
 
         private IPointTaskTagRepository Db => this._taskTagRepositories.FirstOrDefault(x => !x.IsCache);
 
-        public Task<JsonResultData<IEnumerable<PointTaskTag>>> LoadAll()
+        public async Task<JsonResultData<IEnumerable<PointTaskTag>>> LoadAll()
         {
-            throw new NotImplementedException();
+            var lst =await this.Cache.LoadAll();
+            if (lst.Count() > 0)
+                return lst.ToJsonResultData();
+            lst = await this.Db.LoadAll();
+            if (lst.Count() > 0)
+                lst.ToList().ForEach(x => this.Cache.AddOrUpdate(x));
+            return lst.ToJsonResultData();
         }
     }
 }

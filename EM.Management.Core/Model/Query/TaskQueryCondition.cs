@@ -1,19 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 
 namespace EM.Management.Model
 {
-    [Serializable]
+    
     public class TaskQueryCondition :QueryConditionWithTimeRange
     {
+ 
         public string PlatformId { get; set; }
 
+   
         public int TaskTagId { get; set; }
 
+
+
         public string TaskName { get; set; }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is TaskQueryCondition))
+                return false;
+
+            return this..Equals(obj);
+        }
     }
 }

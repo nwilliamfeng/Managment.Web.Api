@@ -19,7 +19,7 @@ namespace EM.Management.Web.Controllers
             this._authService = authService;
         }
 
-        [CacheOutput]
+     
         [HttpPost]      
         public async Task<IHttpActionResult> Login(string userId,string password )
         {

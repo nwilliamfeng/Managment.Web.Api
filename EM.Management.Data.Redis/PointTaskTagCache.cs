@@ -19,8 +19,8 @@ namespace EM.Management.Data.Redis
             var action = taskTag.Id == 0 ? "create" : "modify";
             if (taskTag.Id == 0)
                 taskTag.Id=(int)DateTime.Now.ToUnixTime();
-            else if (!this.Database.HashExists(KEY, taskTag.Id))
-                throw new InvalidOperationException("不存在的taskTag");
+            //else if (!this.Database.HashExists(KEY, taskTag.Id))
+            //    throw new InvalidOperationException("不存在的taskTag");
             var result = await this.Database.HashSetAsync(KEY, taskTag.Id, JsonConvert.SerializeObject(taskTag));
             $"{action} taskTag : {Newtonsoft.Json.JsonConvert.SerializeObject(taskTag)} , the result is {result}".Log();
             return result;
