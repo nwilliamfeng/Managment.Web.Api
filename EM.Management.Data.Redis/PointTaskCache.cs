@@ -15,6 +15,7 @@ namespace EM.Management.Data.Redis
 
         public async Task<PointTask> AddOrUpdateTask(PointTask task)
         {
+            
             var action = task.IsNew ? "create" : "modify";
             if (task.IsNew)
                 task.TaskID = Guid.NewGuid().ToString("N");

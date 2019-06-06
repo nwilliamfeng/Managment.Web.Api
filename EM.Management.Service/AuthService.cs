@@ -18,8 +18,17 @@ namespace EM.Management.Data.Redis
             this._loginInfoRepository = loginInfoRepository;
         }
 
+        public async Task<JsonResultData<bool>> Logout(string userId,string token)
+        {
+            var loginInfo = await this._loginInfoRepository.Load(userId);
+            if (loginInfo == null)
+                throw new ArgumentException("不存在的用户。");
+            var result =await this.Validate(userId, token);
+            if (!result.Data)
+                return false.ToJson("无效的token。");
+            return true.ToJson();
+        }
 
-     
 
         public async Task<JsonResultData<LoginResult>> Login(string userId, string password)
         {

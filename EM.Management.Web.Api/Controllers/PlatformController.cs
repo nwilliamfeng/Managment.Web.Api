@@ -17,17 +17,17 @@ namespace EM.Management.Web.Controllers
 
         public PlatformController(IPlatformService platformService)
         {
-            this._platformService = platformService;
+            this._platformService = platformService; 
         }
 
-        [CacheOutput(ServerTimeSpan =10)]
+        [CacheOutput(ServerTimeSpan = 10)]
         [HttpGet]
-        public async Task<IHttpActionResult>  Platforms()
+        public async Task<IHttpActionResult> Platforms()
         {
-            var lst = await this._platformService.GetPlatforms();        
+            var lst = await this._platformService.GetPlatforms();
             return this.JsonResult(lst.ToJsonResultData());
         }
 
- 
+       
     }
 }

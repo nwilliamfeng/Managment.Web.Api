@@ -35,6 +35,14 @@ namespace EM.Management.Web.Controllers
             
         }
 
+       
+        [HttpPost]
+        [Authentication]
+        public string Logout(string userId,string accessToken)
+        {
+            return "";
+        }
+
 
     }
 }
