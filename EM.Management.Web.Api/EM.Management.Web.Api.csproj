@@ -91,10 +91,11 @@
     <Compile Include="App_Start\AutofacWebapiConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
-    <Compile Include="AuthenticationAttribute.cs" />
+    <Compile Include="Filter\AuthenticationAttribute.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\LiquidationController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Filter\JObjectParamValidateAttribute.cs" />
     <Compile Include="Filter\GlobalLogFilter.cs" />
     <Compile Include="Filter\GlobalExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">

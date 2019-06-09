@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using EM.Management.Service;
+using Newtonsoft.Json.Linq;
 using WebApi.OutputCache.V2;
 
 namespace EM.Management.Web.Controllers
@@ -20,12 +21,15 @@ namespace EM.Management.Web.Controllers
         }
 
      
-        [HttpPost]      
-        public async Task<IHttpActionResult> Login(string userId,string password )
+       
+     
+        [HttpPost]
+        [Filter.JObjectParamValidate(Params ="userId,password")]
+        public async Task<IHttpActionResult> Login([FromBody]JObject param )
         {
             try
             {
-                var result = await this._authService.Login(userId,password);
+                var result = await this._authService.Login(param["userId"].Value<string>()  ,param["password"].Value<string>());
                 return this.JsonResult(result); 
             }
             catch(Exception ex)
