@@ -12,7 +12,7 @@ namespace EM.Management.Client
         static void Main(string[] args)
         {
             Console.ReadLine();
-            new AuthService().Login("fw","1234");
+            new AuthService().Logout( );
             Console.ReadLine();
         }
 

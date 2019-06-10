@@ -33,10 +33,25 @@ namespace EM.Management.Client
             JObject para = new JObject();
             para["userId"] = userName;
             para["password"] = password;
-               var result = await this._httpClientUtil.PostWithJson<JsonResultData< LoginResult>>("api/auth/login",para);
+            var result = await this._httpClientUtil.PostWithJson<JsonResultData< LoginResult>>("api/auth/login",para);
            
         }
 
+
+        public async void Logout()
+        {
+            JObject para = new JObject();
+            para["userId"] = "ddd";
+            para["accessToken"] = "abc";
+            var dic = new Dictionary<string, string>
+            {
+                ["userId"] = "fw",
+                ["password"] = "1234",
+                ["accessToken"] = "agc",
+            };
+
+            var result = await this._httpClientUtil.PostWithJson<JsonResultData<LoginResult>>("api/auth/logout", para,dic);
+        }
      
        
     }

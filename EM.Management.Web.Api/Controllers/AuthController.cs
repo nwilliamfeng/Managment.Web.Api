@@ -42,6 +42,7 @@ namespace EM.Management.Web.Controllers
        
         [HttpPost]
         [Authentication]
+        [Filter.JObjectParamValidate(Params = "userId,accessToken")]
         public string Logout([FromBody]JObject param)
         {
             return "";
