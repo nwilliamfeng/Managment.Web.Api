@@ -36,13 +36,13 @@ namespace EM.Management.Web.Controllers
             {
                 return this.JsonResult(ex.Message.ToJsonWithError());
             }
-            
+           
         }
 
        
         [HttpPost]
         [Authentication]
-        public string Logout(string userId,string accessToken)
+        public string Logout([FromBody]JObject param)
         {
             return "";
         }

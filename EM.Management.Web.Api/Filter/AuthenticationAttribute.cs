@@ -70,11 +70,11 @@ namespace EM.Management.Web
 
         private async Task<IPrincipal> AuthenticateAsync(HttpRequestMessage request)
         {
-#if DEBUG
-            var testIdentity = new ClaimsIdentity("LoanCookie");
-            testIdentity.AddClaim(new Claim(ClaimTypes.Name, "test"));
-            return new ClaimsPrincipal(testIdentity);
-#endif
+//#if DEBUG
+       //     var testIdentity = new ClaimsIdentity("LoanCookie");
+       //     testIdentity.AddClaim(new Claim(ClaimTypes.Name, "test"));
+       //     return new ClaimsPrincipal(testIdentity);
+//#endif
             CookieHeaderValue tokenCookie = request.Headers.GetCookies("accessToken").FirstOrDefault();
             CookieHeaderValue idCookie = request.Headers.GetCookies("userId").FirstOrDefault();
             if (tokenCookie == null || string.IsNullOrWhiteSpace(tokenCookie["accessToken"].Value) || idCookie == null || string.IsNullOrWhiteSpace(idCookie["userId"].Value))
