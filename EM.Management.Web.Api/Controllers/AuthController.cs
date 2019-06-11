@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Http;
 using EM.Management.Service;
 using Newtonsoft.Json.Linq;
-using WebApi.OutputCache.V2;
 
 namespace EM.Management.Web.Controllers
 {
@@ -43,9 +42,10 @@ namespace EM.Management.Web.Controllers
         [HttpPost]
         [Authentication]
         [Filter.JObjectParamValidate(Params = "userId,accessToken")]
-        public string Logout([FromBody]JObject param)
+        public async Task<IHttpActionResult> Logout([FromBody]JObject param)
         {
-            return "";
+            var result = await this._authService.Logout(param["userId"].Value<string>(), param["accessToken"].Value<string>());
+            return this.JsonResult(result) ;
         }
 
 

@@ -11,9 +11,23 @@ namespace EM.Management.Client
     {
         static void Main(string[] args)
         {
-            Console.ReadLine();
-            new AuthService().Logout( );
-            Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Press any Command Number and return...");
+                Console.WriteLine("1. Auth");
+                Console.WriteLine("2. JWT");
+                var key = int.Parse(Console.ReadLine());
+                switch (key)
+                {
+                    case 1:
+                        AuthTest.Init();
+                        break;
+                    case 2:
+                        JwtTest.Init();
+                        break;
+                }
+             
+            }
         }
 
        

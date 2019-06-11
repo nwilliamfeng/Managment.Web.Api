@@ -75,12 +75,15 @@ namespace EM.Management.Web
        //     testIdentity.AddClaim(new Claim(ClaimTypes.Name, "test"));
        //     return new ClaimsPrincipal(testIdentity);
 //#endif
+
+           
+    
             CookieHeaderValue tokenCookie = request.Headers.GetCookies("accessToken").FirstOrDefault();
             CookieHeaderValue idCookie = request.Headers.GetCookies("userId").FirstOrDefault();
             if (tokenCookie == null || string.IsNullOrWhiteSpace(tokenCookie["accessToken"].Value) || idCookie == null || string.IsNullOrWhiteSpace(idCookie["userId"].Value))
                 return null;
 
-            var token = tokenCookie["accessToken"].Value;
+            var token = tokenCookie["accessToken"].Value; //注意，这里从cookie里取数据会自动进行反转义，也就是.net客户端传值时候需要先进行转义
             var userId = idCookie["userId"].Value;
 
             //验证用户合法性，如果合法，构建声明式安全主题权限模式并返回，若用户验证不通过返回空
@@ -98,6 +101,11 @@ namespace EM.Management.Web
                 return result;
             }
             return null;
+        }
+
+        private string GetTokenFromRequest(HttpRequestMessage request)
+        {
+            if(request.Headers.Contains("accessToken"))
         }
     }
 }
