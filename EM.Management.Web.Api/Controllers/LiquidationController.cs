@@ -1,8 +1,10 @@
-﻿using System;
+﻿using EM.Management.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 
@@ -16,6 +18,13 @@ namespace EM.Management.Web.Controllers
 
 
         //}
+
+        [HttpPost]
+        [CacheOutputWithPost(ServerTimeSpan = 22)]
+        public async Task<IHttpActionResult> GetDayReport([FromBody]LiquidationQueryCondition qc)
+        {
+            return this.JsonResult(true.ToJsonResultData());
+        }
 
         //public  JsonResult<List<DayReportEntity>> GetDayReport(string clearDate, int platformid, int pageIndex = 1)
         //{

@@ -26,14 +26,6 @@ namespace EM.Management.Data.Redis
             return await this.Database.HashSetAsync(KEY, loginInfo.UserId, JsonConvert.SerializeObject(loginInfo));       
         }
 
-        public async Task<bool> Validate(string userId, string token)
-        {
-            var login = await this.Load(userId);
-            if (login == null)
-                return false;
-            if ((DateTime.Now - login.LoginTime).TotalSeconds > 24 * 3600) //过期
-                return false;
-             return login.GetAccessToken()==token;             
-        }
+      
     }
 }

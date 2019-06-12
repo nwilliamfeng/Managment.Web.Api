@@ -11,9 +11,9 @@ namespace EM.Management.Service
     {
         Task<JsonResultData<LoginResult>> Login(string userId ,string password);
 
-        Task<JsonResultData<bool>> Logout(string userId, string token);
+        Task<JsonResultData<bool>> Logout(string accessToken);
 
 
-        Task<JsonResultData<bool>> Validate(string userId, string token);
+        Task<JsonResultData<bool>> Validate(string accessToken);
     }
 }

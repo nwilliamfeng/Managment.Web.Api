@@ -14,23 +14,10 @@ namespace EM.Management
        
         public string Password { get; set; }
 
-        public DateTime LoginTime { get; set; }
+        public DateTime UpdateTime { get; set; }
 
-        public string TokenKey { get; set; }
+      
 
-
-        public string GetAccessToken()
-        {
-            if (string.IsNullOrEmpty(UserId) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(TokenKey))
-                throw new InvalidOperationException("有空的值，无法生成token");
-            var hc = UserId.GetHashCode() * 137 + Password.GetHashCode() * 37 + LoginTime.GetHashCode() * 13 + TokenKey.GetHashCode();
-            var result= CommonUtils.SimpleEncryptUtils.EncryptString(hc.ToString(), TokenKey);
-            return result;
-        }
-
-        public LoginResult ToResult()
-        {
-            return new LoginResult { UserId = this.UserId, UserName = UserName, LoginTime = this.LoginTime, AccessToken = this.GetAccessToken() };
-        }
+      
     }
 }

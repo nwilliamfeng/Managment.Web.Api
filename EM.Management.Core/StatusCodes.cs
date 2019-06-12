@@ -14,6 +14,12 @@ namespace EM.Management
 
         public const int ACTION_ERROR = 2;
 
+        public const int TOKEN_EXPIRE = 3;
+
+        public const int TOKEN_NOT_FOUND = 4;
+
+        public const int TOKEN_INVALID = 5;
+
         public const int ERROR = 99;
     }
 }

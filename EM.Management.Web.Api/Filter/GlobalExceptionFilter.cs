@@ -36,7 +36,7 @@ namespace EM.Management.Web.Filter
             var msg =await  actionResult .ExecuteAsync(cancellationToken);
             msg.StatusCode = HttpStatusCode.InternalServerError;
             actionExecutedContext.Response = msg;
-            // return base.OnExceptionAsync(actionExecutedContext, cancellationToken);
+            await base.OnExceptionAsync(actionExecutedContext, cancellationToken);
         }
     }
 }

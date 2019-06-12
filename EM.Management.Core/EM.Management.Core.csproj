@@ -56,6 +56,7 @@
     <Compile Include="Model\EnumTaskType.cs" />
     <Compile Include="Model\LoginResult.cs" />
     <Compile Include="Model\Platform.cs" />
+    <Compile Include="Model\Query\LiquidationQueryCondition.cs" />
     <Compile Include="Model\Query\QueryResult.cs" />
     <Compile Include="Model\Query\QueryConditionWithTimeRange.cs" />
     <Compile Include="Model\Query\QueryCondition.cs" />
@@ -67,8 +68,8 @@
     <Compile Include="Service\IPlatformService.cs" />
     <Compile Include="Service\IPointTaskService.cs" />
     <Compile Include="Service\IPointTaskTagService.cs" />
-    <Compile Include="StatusCodes.cs" />
     <Compile Include="Model\LoginInfo.cs" />
+    <Compile Include="StatusCodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonUtils\CommonUtils.csproj">

@@ -11,7 +11,7 @@ namespace EM.Management.Data
     {
         Task<LoginInfo> Load(string userId);
 
-        Task<bool> Validate(string userId,string token);
+      
 
         Task<bool> Save(LoginInfo loginInfo);
     }

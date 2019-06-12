@@ -22,6 +22,13 @@ namespace EM.Management
             return result;
         }
 
+
+        public static JsonResultData<T> SetStatusCode<T>(this JsonResultData<T> result,int statusCode)
+        {
+            result.StatusCode = statusCode;
+            return result;
+        }
+
         public static JsonResultData<T> ToJsonResultData<T>(this T obj)
         {
             var count = obj is System.Collections.IEnumerable ? (obj as System.Collections.IEnumerable).Cast<object>().Count() : 0;

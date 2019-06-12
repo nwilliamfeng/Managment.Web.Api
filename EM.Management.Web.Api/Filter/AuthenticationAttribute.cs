@@ -51,15 +51,31 @@ namespace EM.Management.Web
 
         public async Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
         {
-            var principal = await this.AuthenticateAsync(context.Request);
-            if (principal == null)
+            var pt = await this.AuthenticateAsync(context.Request);
+            if (pt.Item1 == null)
             {
                 context.Request.Headers.GetCookies().Clear();
-                context.ErrorResult = new AuthenticationFailureResult("未授权请求", context.Request);
+                //  context.ErrorResult = new AuthenticationFailureResult("未授权请求", context.Request);
+                string msg = null;
+                switch (pt.Item2)
+                {
+                    case StatusCodes.TOKEN_EXPIRE:
+                        msg = "令牌已过期";
+                        break;
+                    case StatusCodes.TOKEN_INVALID:
+                        msg = "非法的令牌";
+                        break;
+                    case StatusCodes.TOKEN_NOT_FOUND:
+                        msg = "令牌不存在";
+                        break;
+                    default:
+                        break;
+                }
+                context.ErrorResult = context.Request.JsonResult(false.ToJson(msg==null? "授权失败":msg).SetStatusCode(pt.Item2));
             }
             else
             {
-                context.Principal = principal;
+                context.Principal = pt.Item1;
             }
         }
 
@@ -67,45 +83,30 @@ namespace EM.Management.Web
         {
             return Task.FromResult(0);
         }
-
-        private async Task<IPrincipal> AuthenticateAsync(HttpRequestMessage request)
+ 
+        private async Task<Tuple< IPrincipal,int>> AuthenticateAsync(HttpRequestMessage request)
         {
-//#if DEBUG
-       //     var testIdentity = new ClaimsIdentity("LoanCookie");
-       //     testIdentity.AddClaim(new Claim(ClaimTypes.Name, "test"));
-       //     return new ClaimsPrincipal(testIdentity);
-//#endif
-
-           
-    
-            CookieHeaderValue tokenCookie = request.Headers.GetCookies("accessToken").FirstOrDefault();
-            CookieHeaderValue idCookie = request.Headers.GetCookies("userId").FirstOrDefault();
-            if (tokenCookie == null || string.IsNullOrWhiteSpace(tokenCookie["accessToken"].Value) || idCookie == null || string.IsNullOrWhiteSpace(idCookie["userId"].Value))
-                return null;
-
-            var token = tokenCookie["accessToken"].Value; //注意，这里从cookie里取数据会自动进行反转义，也就是.net客户端传值时候需要先进行转义
-            var userId = idCookie["userId"].Value;
-
+            int statusCode = 0;
+            var token = request.Headers.Authorization.Scheme;
+            if (string.IsNullOrEmpty(token))
+                return new Tuple<IPrincipal, int>(null,StatusCodes.TOKEN_NOT_FOUND);
             //验证用户合法性，如果合法，构建声明式安全主题权限模式并返回，若用户验证不通过返回空
-            var isValid = false;
             using (var scope = AutofacWebapiConfig.Container.BeginLifetimeScope())
             {
                 var authService = scope.Resolve<IAuthService>();
-                isValid = (await authService.Validate(userId, token)).Data;
+                var result = await authService.Validate(token);
+                statusCode = result.StatusCode;
             }
-            if (isValid)
+            if (statusCode==1) //成功
             {
-                var identity = new ClaimsIdentity("LoanCookie");
+                var identity = new ClaimsIdentity("LoanToken");
                 identity.AddClaim(new Claim(ClaimTypes.Name, token));
                 var result = new ClaimsPrincipal(identity);
-                return result;
+                return new Tuple<IPrincipal, int>( result,statusCode);
             }
-            return null;
+            return new Tuple<IPrincipal, int>(null,statusCode);
         }
 
-        private string GetTokenFromRequest(HttpRequestMessage request)
-        {
-            if(request.Headers.Contains("accessToken"))
-        }
+        
     }
 }

@@ -108,7 +108,6 @@
     <Compile Include="Helper\CacheOutputWithPostAttribute.cs" />
     <Compile Include="Helper\JsonResultExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatusCodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
