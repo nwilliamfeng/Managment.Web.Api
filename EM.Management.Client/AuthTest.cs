@@ -63,7 +63,7 @@ namespace EM.Management.Client
             if (currLoginResult == null)
                 Console.WriteLine("there is no logininfo,logout is fail...");
             var auth = new AuthService();
-            var result = await auth.Logout(currLoginResult.UserId,currLoginResult.AccessToken);
+            var result = await auth.Logout(currLoginResult.AccessToken);
             
             Console.WriteLine("注销"+(result?"成功":"失败"));
         }

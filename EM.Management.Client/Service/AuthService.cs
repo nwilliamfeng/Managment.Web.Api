@@ -40,18 +40,16 @@ namespace EM.Management.Client
         }
 
 
-        public async Task<bool> Logout(string userName,string accessToken)
+        public async Task<bool> Logout(string accessToken)
         {
-            JObject para = new JObject();
-            para["userId"] = userName;
+            JObject para = new JObject();         
             para["accessToken"] = accessToken;
-            var dic = new Dictionary<string, string>
-            {
-                ["userId"] =Uri.EscapeDataString( userName),
-                ["accessToken"] =Uri.EscapeDataString( accessToken),
+            var headers = new Dictionary<string, string>
+            {          
+                ["Authorization"] = accessToken,
             };
 
-            var result= await this._httpClientUtil.PostWithJson<JsonResultData<bool>>("api/auth/logout", para,dic);
+            var result= await this._httpClientUtil.PostWithJson<JsonResultData<bool>>("api/auth/logout", para,headers);
             return result.Data;
         }
      

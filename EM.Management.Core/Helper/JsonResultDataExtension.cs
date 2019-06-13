@@ -39,7 +39,7 @@ namespace EM.Management
 
         public static JsonResultData<string> ToJson(this Exception ex)
         {
-            return new JsonResultData<string> { Data = ex.StackTrace, StatusCode = StatusCodes.ERROR, Message = ex.Message };
+            return new JsonResultData<string> { Data =null, StatusCode = StatusCodes.ERROR, Message = ex.Message };
         }
 
         public static JsonResultData<bool> ToJson(this bool result,string message=null)

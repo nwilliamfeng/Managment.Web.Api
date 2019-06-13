@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EM.Management
+namespace EM.Management.Model
 {
     public class LoginResult
     {

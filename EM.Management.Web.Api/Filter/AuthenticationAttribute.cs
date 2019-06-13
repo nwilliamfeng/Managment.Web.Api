@@ -87,6 +87,8 @@ namespace EM.Management.Web
         private async Task<Tuple< IPrincipal,int>> AuthenticateAsync(HttpRequestMessage request)
         {
             int statusCode = 0;
+            if(request.Headers.Authorization==null)
+                return new Tuple<IPrincipal, int>(null, StatusCodes.TOKEN_NOT_FOUND);
             var token = request.Headers.Authorization.Scheme;
             if (string.IsNullOrEmpty(token))
                 return new Tuple<IPrincipal, int>(null,StatusCodes.TOKEN_NOT_FOUND);

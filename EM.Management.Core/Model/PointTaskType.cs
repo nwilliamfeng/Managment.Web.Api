@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EM.Management
 {
-    public enum EnumTaskType
+    public enum PointTaskType
     {
         Unlimited = 0,
         Once = 1,

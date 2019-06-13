@@ -11,7 +11,7 @@ namespace EM.Management
        
         public string TaskStrategyID { get; set; }
         
-        public EnumTaskType TaskType { get; set; }
+        public PointTaskType TaskType { get; set; }
         
         public EnumTaskSubType TaskSubType { get; set; }
         

@@ -33,7 +33,7 @@ namespace EM.Management.Web.Controllers
             }
             catch(Exception ex)
             {
-                return this.JsonResult(ex.Message.ToJsonWithError());
+                return this.JsonResult(ex.ToJson());
             }
            
         }
@@ -41,10 +41,9 @@ namespace EM.Management.Web.Controllers
        
         [HttpPost]
         [Authentication]
-        [Filter.JObjectParamValidate(Params = "accessToken")]
         public async Task<IHttpActionResult> Logout([FromBody]JObject param)
         {
-            var result = await this._authService.Logout( param["accessToken"].Value<string>());
+            var result = await this._authService.Logout(param["accessToken"].Value<string>());
             return this.JsonResult(result) ;
         }
 

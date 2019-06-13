@@ -9,10 +9,10 @@ namespace EM.Management.Data
 {
     public interface ILoginInfoRepository : IRepository
     {
-        Task<LoginInfo> Load(string userId);
+        Task<int> GetLoginTimeStamp(string userId);
 
       
 
-        Task<bool> Save(LoginInfo loginInfo);
+        Task<bool> Update(string userId,DateTime time);
     }
 }

@@ -49,6 +49,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserRepository.cs" />
     <Compile Include="PointTaskRepository.cs" />
     <Compile Include="PlatformRepository.cs" />
     <Compile Include="PointTaskTagRepository.cs" />

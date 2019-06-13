@@ -43,17 +43,20 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IFileInfoRepository.cs" />
     <Compile Include="Data\IPointTaskTagRepository.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\ILoginInfoRepository.cs" />
     <Compile Include="Data\IPointTaskRepository.cs" />
     <Compile Include="Data\IPlatformRepository.cs" />
+    <Compile Include="Data\IUserRepository.cs" />
     <Compile Include="Helper\JsonResultDataExtension.cs" />
     <Compile Include="JsonResultData.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Model\DayReport.cs" />
     <Compile Include="Model\EnumTaskSubType.cs" />
-    <Compile Include="Model\EnumTaskType.cs" />
+    <Compile Include="Model\PointTaskType.cs" />
+    <Compile Include="Model\FileInfo.cs" />
     <Compile Include="Model\LoginResult.cs" />
     <Compile Include="Model\Platform.cs" />
     <Compile Include="Model\Query\LiquidationQueryCondition.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="Model\Query\QueryCondition.cs" />
     <Compile Include="Model\Query\TaskQueryCondition.cs" />
     <Compile Include="Model\PointTaskTag.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\PointTask.cs" />
     <Compile Include="Service\IAuthService.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="Service\IPointTaskService.cs" />
     <Compile Include="Service\IPointTaskTagService.cs" />
     <Compile Include="Model\LoginInfo.cs" />
+    <Compile Include="Service\IUserService.cs" />
     <Compile Include="StatusCodes.cs" />
   </ItemGroup>
   <ItemGroup>

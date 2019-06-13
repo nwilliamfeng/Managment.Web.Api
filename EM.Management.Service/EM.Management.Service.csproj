@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Helper\LoggerExtension.cs" />
     <Compile Include="AuthService.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="PointTaskService.cs" />
     <Compile Include="PlatformService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
