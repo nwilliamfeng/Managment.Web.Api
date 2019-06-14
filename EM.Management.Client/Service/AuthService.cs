@@ -9,6 +9,7 @@ using System.Net;
 using CommonUtils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using EM.Management.Model;
 
 namespace EM.Management.Client
 {

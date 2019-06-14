@@ -93,9 +93,7 @@
   <ItemGroup>
     <Compile Include="App_Start\AutofacWebapiConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Configuration\FileConfigurationSection.cs" />
     <Compile Include="Controllers\AuthController.cs" />
-    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Filter\AuthenticationAttribute.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\LiquidationController.cs" />
