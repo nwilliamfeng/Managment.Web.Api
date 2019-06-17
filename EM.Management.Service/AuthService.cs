@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommonUtils;
-
+using EM.Management.Model;
 
 namespace EM.Management.Data.Redis
 {

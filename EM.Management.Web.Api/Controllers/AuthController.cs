@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using EM.Management.Service;
+using Microcomm.Web.Http;
+using Microcomm.Web.Http.Filters;
 using Newtonsoft.Json.Linq;
 
 namespace EM.Management.Web.Controllers
@@ -23,7 +25,7 @@ namespace EM.Management.Web.Controllers
        
      
         [HttpPost]
-        [Filter.JObjectParamValidate(Params ="userId,password")]
+        [JObjectParamValidate(Params ="userId,password")]
         public async Task<IHttpActionResult> Login([FromBody]JObject param )
         {
             try

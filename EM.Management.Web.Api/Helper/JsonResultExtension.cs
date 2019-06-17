@@ -9,29 +9,29 @@ using System.Web.Http.Results;
 
 namespace EM.Management.Web
 {
-    public static class JsonResultExtension
-    {
-        private static JsonSerializerSettings GetSettings()
-        {
-            return new JsonSerializerSettings
-            {
-                DateFormatString = "yyyy-MM-dd HH:mm:ss",
-                ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
-            };
-        }
+    //public static class JsonResultExtension
+    //{
+    //    private static JsonSerializerSettings GetSettings()
+    //    {
+    //        return new JsonSerializerSettings
+    //        {
+    //            DateFormatString = "yyyy-MM-dd HH:mm:ss",
+    //            ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
+    //        };
+    //    }
 
-        public static IHttpActionResult JsonResult<T>(this ApiController controller,T data)
-        {
+    //    public static IHttpActionResult JsonResult<T>(this ApiController controller,T data)
+    //    {
              
-            return new JsonResult<T>(data, GetSettings(), System.Text.Encoding.UTF8, controller);
+    //        return new JsonResult<T>(data, GetSettings(), System.Text.Encoding.UTF8, controller);
        
-        }
+    //    }
 
-        public static IHttpActionResult JsonResult<T>(this HttpRequestMessage httpRequestMsg, T data)
-        {
+    //    public static IHttpActionResult JsonResult<T>(this HttpRequestMessage httpRequestMsg, T data)
+    //    {
            
-            return new JsonResult<T>(data, GetSettings(), System.Text.Encoding.UTF8, httpRequestMsg);
+    //        return new JsonResult<T>(data, GetSettings(), System.Text.Encoding.UTF8, httpRequestMsg);
 
-        }
-    }
+    //    }
+    //}
 }

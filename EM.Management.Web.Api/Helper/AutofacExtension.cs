@@ -10,18 +10,26 @@ using EM.Management.Service;
 
 namespace EM.Management.Web
 {
-    public static class AutofacExtension
-    {
+    //public static class AutofacExtension
+    //{
        
-        public static IContainer RegistComponentsWithSpecifiedSuffix(this ContainerBuilder builder, params string[] suffixs)
-        {
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            var amblys = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.ManifestModule.Name.Contains("EM.Management"));
-            builder.RegisterAssemblyTypes(typeof(PlatformService).Assembly).Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces();
-            builder.RegisterAssemblyTypes(typeof(EM.Management.Data.MySQL.PlatformRepository).Assembly).Where(t => t.Name.EndsWith("Repository")).AsImplementedInterfaces();
-            builder.RegisterAssemblyTypes(typeof(EM.Management.Data.Redis.RedisCache).Assembly).Where(t => t.Name.EndsWith("Cache")).AsImplementedInterfaces();
+    //    public static IContainer RegistComponentsWithSpecifiedSuffix(this ContainerBuilder builder, params string[] typeSuffixs)
+    //    {
+    //        builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+    //        var amblys = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.ManifestModule.Name.Contains("EM.Management")).ToList();
 
-            return builder.Build();
-        }
-    }
+    //        typeSuffixs.ToList().ForEach(suffix =>
+    //        {
+    //            var ambly = amblys.FirstOrDefault(x => x.GetTypes().Where(t => t.Name.EndsWith(suffix) && t.IsClass && !t.IsAbstract).Count()>0);
+    //            if(ambly!=null)
+    //                builder.RegisterAssemblyTypes(ambly).Where(t => t.Name.EndsWith(suffix)).AsImplementedInterfaces();
+    //        });
+           
+    //      //  builder.RegisterAssemblyTypes(typeof(PlatformService).Assembly).Where(t => t.Name.EndsWith("Service")).AsImplementedInterfaces();
+    //      //  builder.RegisterAssemblyTypes(typeof(EM.Management.Data.MySQL.PlatformRepository).Assembly).Where(t => t.Name.EndsWith("Repository")).AsImplementedInterfaces();
+    //      //  builder.RegisterAssemblyTypes(typeof(EM.Management.Data.Redis.RedisCache).Assembly).Where(t => t.Name.EndsWith("Cache")).AsImplementedInterfaces();
+
+    //        return builder.Build();
+    //    }
+    //}
 }

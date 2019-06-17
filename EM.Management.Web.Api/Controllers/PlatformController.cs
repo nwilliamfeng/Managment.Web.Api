@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using EM.Management.Service;
+using Microcomm.Web.Http;
+using Microcomm.Web.Http.Filters;
 using WebApi.OutputCache.V2;
 
 namespace EM.Management.Web.Controllers
