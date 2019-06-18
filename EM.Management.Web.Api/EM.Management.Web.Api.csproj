@@ -59,8 +59,8 @@
     <Reference Include="Microcomm.Core, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microcomm.Core.1.0.0.2\lib\net462\Microcomm.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microcomm.WebApi, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microcomm.WebApi.1.0.0.2\lib\net462\Microcomm.WebApi.dll</HintPath>
+    <Reference Include="Microcomm.WebApi, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microcomm.WebApi.1.0.0.3\lib\net462\Microcomm.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -97,7 +97,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AutofacWebapiConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Filter\AuthenticationAttribute.cs" />

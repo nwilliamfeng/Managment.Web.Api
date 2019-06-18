@@ -1,4 +1,5 @@
-﻿using Microcomm.Web.Http.Autofac;
+﻿using Autofac;
+using Microcomm.Web.Http.Autofac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,8 @@ namespace EM.Management.Web
         {
              EM.Management.Data.Redis.RedisCache.ConfigName = "RedisServer";
 
-            AutofacWebapiConfig.Initialize(GlobalConfiguration.Configuration, "EM.Management",new string[] { "Repository", "Cache", "Service" });
-         
+             AutofacWebapiConfig.Initialize(GlobalConfiguration.Configuration, "EM.Management",new string[] { "Repository", "Cache", "Service" });
+        
             GlobalConfiguration.Configure(WebApiConfig.Register);
         
            
