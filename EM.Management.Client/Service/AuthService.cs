@@ -6,13 +6,25 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Configuration;
 using System.Net;
-using CommonUtils;
+ 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using EM.Management.Model;
+using Microcomm;
 
 namespace EM.Management.Client
 {
+    public class LoginResult
+    {
+        public string UserId { get; set; }
+
+        public string UserName { get; set; }
+
+        public string AccessToken { get; set; }
+
+        public DateTime LoginTime { get; set; }
+    }
+
     public class AuthService
     {
         private const string LOGIN_URL = "auth/login";

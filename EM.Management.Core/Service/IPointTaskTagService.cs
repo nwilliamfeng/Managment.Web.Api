@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EM.Management.Model;
+using Microcomm;
 
 namespace EM.Management.Service
 {

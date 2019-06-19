@@ -35,9 +35,11 @@
     <Reference Include="JWT">
       <HintPath>..\packages\JWT.5.1.1\lib\net46\JWT.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microcomm.Core, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microcomm.Core.1.0.0.3\lib\net462\Microcomm.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -53,13 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonUtils\CommonUtils.csproj">
-      <Project>{4df7398d-da74-4bb2-9841-716b42318080}</Project>
-      <Name>CommonUtils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EM.Management.Core\EM.Management.Core.csproj">
       <Project>{3ed7832b-0249-4c62-9403-65e67084439f}</Project>
       <Name>EM.Management.Core</Name>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommonUtils;
+using Microcomm;
 using Newtonsoft.Json;
 
 namespace EM.Management.Data.Redis

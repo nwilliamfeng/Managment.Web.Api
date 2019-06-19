@@ -33,9 +33,8 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,18 +45,14 @@
     <Compile Include="Data\IFileInfoRepository.cs" />
     <Compile Include="Data\IPointTaskTagRepository.cs" />
     <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Data\ILoginInfoRepository.cs" />
     <Compile Include="Data\IPointTaskRepository.cs" />
     <Compile Include="Data\IPlatformRepository.cs" />
-    <Compile Include="Data\IUserRepository.cs" />
     <Compile Include="Helper\JsonResultDataExtension.cs" />
-    <Compile Include="JsonResultData.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Model\DayReport.cs" />
     <Compile Include="Model\EnumTaskSubType.cs" />
     <Compile Include="Model\PointTaskType.cs" />
     <Compile Include="Model\FileInfo.cs" />
-    <Compile Include="Model\LoginResult.cs" />
     <Compile Include="Model\Platform.cs" />
     <Compile Include="Model\Query\LiquidationQueryCondition.cs" />
     <Compile Include="Model\Query\QueryResult.cs" />
@@ -65,21 +60,19 @@
     <Compile Include="Model\Query\QueryCondition.cs" />
     <Compile Include="Model\Query\TaskQueryCondition.cs" />
     <Compile Include="Model\PointTaskTag.cs" />
-    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\PointTask.cs" />
-    <Compile Include="Service\IAuthService.cs" />
     <Compile Include="Service\IPlatformService.cs" />
     <Compile Include="Service\IPointTaskService.cs" />
     <Compile Include="Service\IPointTaskTagService.cs" />
-    <Compile Include="Model\LoginInfo.cs" />
-    <Compile Include="Service\IUserService.cs" />
-    <Compile Include="StatusCodes.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonUtils\CommonUtils.csproj">
-      <Project>{4df7398d-da74-4bb2-9841-716b42318080}</Project>
-      <Name>CommonUtils</Name>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Microcomm.Core\Microcomm.Core\Microcomm.Core.csproj">
+      <Project>{d6c9ecc1-24cb-4b77-88b9-b706e63963b0}</Project>
+      <Name>Microcomm.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

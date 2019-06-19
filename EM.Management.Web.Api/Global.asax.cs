@@ -19,7 +19,7 @@ namespace EM.Management.Web
         {
              EM.Management.Data.Redis.RedisCache.ConfigName = "RedisServer";
 
-             AutofacWebapiConfig.Initialize(GlobalConfiguration.Configuration, "EM.Management",new string[] { "Repository", "Cache", "Service" });
+             AutofacWebapiConfig.Initialize(this,GlobalConfiguration.Configuration, "EM.Management",new string[] { "Repository", "Cache", "Service" });
         
             GlobalConfiguration.Configure(WebApiConfig.Register);
         

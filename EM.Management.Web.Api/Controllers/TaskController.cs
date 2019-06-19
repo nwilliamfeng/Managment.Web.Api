@@ -42,8 +42,7 @@ namespace EM.Management.Web.Controllers
             var result = await this._taskService.GetTasks(qc);
             return this.JsonResult(result);
         }
-
-
+        
 
 
         [HttpGet]
