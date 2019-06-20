@@ -56,9 +56,6 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microcomm.WebApi, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microcomm.WebApi.1.0.0.6\lib\net462\Microcomm.WebApi.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -98,8 +95,6 @@
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\LiquidationController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
-    <Compile Include="Filter\GlobalLogFilter.cs" />
-    <Compile Include="Filter\GlobalExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -131,6 +126,10 @@
     <ProjectReference Include="..\..\Microcomm.Core\Microcomm.Core\Microcomm.Core.csproj">
       <Project>{d6c9ecc1-24cb-4b77-88b9-b706e63963b0}</Project>
       <Name>Microcomm.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Microcomm.WebApi\Microcomm.WebApi\Microcomm.WebApi.csproj">
+      <Project>{abb62492-7d53-4a5b-bce1-7b40a01ec6dd}</Project>
+      <Name>Microcomm.WebApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\EM.Management.Core\EM.Management.Core.csproj">
       <Project>{3ed7832b-0249-4c62-9403-65e67084439f}</Project>

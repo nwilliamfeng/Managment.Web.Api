@@ -30,7 +30,7 @@
    
 
     <appender name="ApiInfoAppender" type="log4net.Appender.RollingFileAppender">
-      <file value="d:\em_logs\api\info\" />
+      <file value="d:\logs\em_management\api\info\" />
       <encoding value="utf-8" />
       <appendToFile value="true" />
       <param name="AppendToFile" value="true" />
@@ -44,7 +44,7 @@
       </layout>
     </appender>
     <appender name="ApiErrorAppender" type="log4net.Appender.RollingFileAppender">
-      <file value="d:\em_logs\api\error\" />
+      <file value="d:\logs\em_management\api\error\" />
       <encoding value="utf-8" />
       <appendToFile value="true" />
       <param name="AppendToFile" value="true" />
@@ -59,7 +59,7 @@
     </appender>
 
     <appender name="ServiceInfoAppender" type="log4net.Appender.RollingFileAppender">
-      <file value="d:\em_logs\service\info\" />
+      <file value="d:\logs\em_management\service\info\" />
       <encoding value="utf-8" />
       <appendToFile value="true" />
       <param name="AppendToFile" value="true" />
@@ -74,7 +74,7 @@
     </appender>
 
     <appender name="ServiceErrorAppender" type="log4net.Appender.RollingFileAppender">
-      <file value="d:\em_logs\service\error\" />
+      <file value="d:\logs\em_management\service\error\" />
       <encoding value="utf-8" />
       <appendToFile value="true" />
       <param name="AppendToFile" value="true" />
@@ -88,7 +88,7 @@
       </layout>
     </appender>
     <appender name="RedisInfoAppender" type="log4net.Appender.RollingFileAppender">
-      <file value="d:\em_logs\redis\info\" />
+      <file value="d:\logs\em_management\redis\info\" />
       <encoding value="utf-8" />
       <appendToFile value="true" />
       <param name="AppendToFile" value="true" />
@@ -103,7 +103,7 @@
     </appender>
 
     <appender name="RedisErrorAppender" type="log4net.Appender.RollingFileAppender">
-      <file value="d:\em_logs\redis\error\" />
+      <file value="d:\logs\em_management\redis\error\" />
       <encoding value="utf-8" />
       <appendToFile value="true" />
       <param name="AppendToFile" value="true" />
